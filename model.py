@@ -35,8 +35,9 @@ import numpy as np
 def predict_from_scores(scores):
     return np.where(scores >= 0, 1, -1)
 
-# Step 5 - hinge_loss_example (not yet solved)
-# TODO: implement
+# Step 5 - hinge_loss_example
+def hinge_loss_example(score, y):
+    return np.clip(1 - y * score, a_min=0, a_max=None)
 
 # Step 6 - svm_objective (not yet solved)
 # TODO: implement
