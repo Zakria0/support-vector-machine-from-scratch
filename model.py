@@ -43,8 +43,18 @@ def hinge_loss_example(score, y):
 def svm_objective(x, y, params, reg_lambda):
     return float(np.mean(hinge_loss_example(compute_scores(x, params), y)) + reg_lambda * (params['w'] @ params['w']))
 
-# Step 7 - compute_gradients (not yet solved)
-# TODO: implement
+# Step 7 - compute_gradients
+import numpy as np
+
+def compute_gradients(x, y, params, reg_lambda):
+    """Return {'dw': ndarray shape (n_features,), 'db': float} = gradient of svm_objective."""
+    w, b = params['w'], params['b']
+    mask = (1 - y * (x @ w + b)) > 0
+    loss = mask * y
+    return {
+        'dw': (-loss @ x) / x.shape[0] + 2 * reg_lambda * w,
+        'db': -np.mean(loss)
+    }
 
 # Step 8 - apply_update (not yet solved)
 # TODO: implement
