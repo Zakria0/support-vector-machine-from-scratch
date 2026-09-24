@@ -29,8 +29,11 @@ def compute_scores(x, params):
     w, b = params['w'], params['b']
     return x @ w + b
 
-# Step 4 - predict_from_scores (not yet solved)
-# TODO: implement
+# Step 4 - predict_from_scores
+import numpy as np
+
+def predict_from_scores(scores):
+    return np.where(scores >= 0, 1, -1)
 
 # Step 5 - hinge_loss_example (not yet solved)
 # TODO: implement
